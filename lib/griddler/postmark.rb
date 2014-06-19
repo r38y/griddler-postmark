@@ -1,7 +1,5 @@
+require "griddler"
 require "griddler/postmark/version"
+require "griddler/postmark/adapter"
 
-module Griddler
-  module Postmark
-    # Your code goes here...
-  end
-end
+Griddler.adapter_registry.register(:postmark, Griddler::Postmark::Adapter)
