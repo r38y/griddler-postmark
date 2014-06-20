@@ -6,11 +6,11 @@ require 'griddler/postmark/version'
 Gem::Specification.new do |spec|
   spec.name          = "griddler-postmark"
   spec.version       = Griddler::Postmark::VERSION
-  spec.authors       = []
-  spec.email         = []
-  spec.summary       = %q{TODO: Write a short summary. Required.}
-  spec.description   = %q{TODO: Write a longer description. Optional.}
-  spec.homepage      = ""
+  spec.authors       = ['Randy Schmidt']
+  spec.email         = ['me@r38y.com']
+  spec.summary       = %q{Postmark adapter for Griddler}
+  spec.description   = %q{Adapter to allow the use of Postmark Parse API with Griddler}
+  spec.homepage      = "https://github.com/r38y/griddler-postmark"
   spec.license       = "MIT"
 
   spec.files         = `git ls-files -z`.split("\x0")

@@ -1,4 +1,4 @@
-Copyright (c) 2014
+Copyright (c) 2014 Randy Schmidt
 Portions copyright (c) 2014 Caleb Thompson, Joel Oliveira and thoughtbot, inc.
 
 MIT License

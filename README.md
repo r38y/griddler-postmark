@@ -15,7 +15,16 @@ gem 'griddler-postmark'
 
 ## Usage
 
-TODO: Write usage instructions here
+Create an initializer with the following settings:
+
+```
+Griddler.configure do |config|
+  config.email_service = :postmark
+end
+```
+
+Then configure Postmark to use the endpoint specified in Griddler's
+docs.
 
 ## More Information
 
