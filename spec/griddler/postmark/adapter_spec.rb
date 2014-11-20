@@ -44,10 +44,10 @@ describe Griddler::Postmark::Adapter, '.normalize_params' do
 
     first, second = *normalized_params[:attachments]
 
-    first.original_filename.should eq('photo1.jpg')
+    expect(first.original_filename).to eq('photo1.jpg')
     expect(first.size).to eq(upload_1_params[:ContentLength])
 
-    second.original_filename.should eq('photo2.jpg')
+    expect(second.original_filename).to eq('photo2.jpg')
     expect(second.size).to eq(upload_2_params[:ContentLength])
   end
 
