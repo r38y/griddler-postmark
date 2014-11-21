@@ -15,6 +15,10 @@ describe Griddler::Postmark::Adapter, '.normalize_params' do
         Email: 'emily@example.com',
         Name: '',
       }],
+      BccFull: [{
+        Email: 'mary@example.com',
+        Name: 'Mary',
+      }],
       TextBody: 'hi',
     }
 
@@ -22,10 +26,11 @@ describe Griddler::Postmark::Adapter, '.normalize_params' do
     expect(Griddler::Postmark::Adapter.normalize_params(default_params)).to be_normalized_to({
       to: ['Robert Paulson <bob@example.com>'],
       cc: ['Jack <jack@example.com>'],
+      bcc: ['Mary <mary@example.com>'],
       from: 'Tyler Durden <tdurden@example.com>',
       subject: 'Reminder: First and Second Rule',
       text: /Dear bob/,
-      html: %r{<p>Dear bob</p>}
+      html: %r{<p>Dear bob</p>},
     })
   end
 
@@ -44,10 +49,10 @@ describe Griddler::Postmark::Adapter, '.normalize_params' do
 
     first, second = *normalized_params[:attachments]
 
-    first.original_filename.should eq('photo1.jpg')
+    expect(first.original_filename).to eq('photo1.jpg')
     expect(first.size).to eq(upload_1_params[:ContentLength])
 
-    second.original_filename.should eq('photo2.jpg')
+    expect(second.original_filename).to eq('photo2.jpg')
     expect(second.size).to eq(upload_2_params[:ContentLength])
   end
 
@@ -84,6 +89,10 @@ describe Griddler::Postmark::Adapter, '.normalize_params' do
       CcFull: [{
         Email: 'jack@example.com',
         Name: 'Jack'
+      }],
+      BccFull: [{
+        Email: 'mary@example.com',
+        Name: 'Mary',
       }],
       Subject: 'Reminder: First and Second Rule',
       TextBody: text_body,

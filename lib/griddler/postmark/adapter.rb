@@ -16,6 +16,7 @@ module Griddler
         {
           to: extract_recipients(:ToFull),
           cc: extract_recipients(:CcFull),
+          bcc: extract_recipients(:BccFull),
           from: full_email(params[:FromFull]),
           subject: params[:Subject],
           text: params[:TextBody],
