@@ -22,12 +22,20 @@ module Griddler
           text: params[:TextBody],
           html: params[:HtmlBody],
           attachments: attachment_files,
+          headers: headers
         }
       end
 
       private
 
       attr_reader :params
+
+      def headers
+        Array(@params[:Headers]).inject({}) do |hash, header|
+          hash[header[:Name]] = header[:Value]
+          hash
+        end
+      end
 
       def extract_recipients(key)
         params[key].to_a.map { |recipient| full_email(recipient) }
