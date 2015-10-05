@@ -31,6 +31,9 @@ describe Griddler::Postmark::Adapter, '.normalize_params' do
       subject: 'Reminder: First and Second Rule',
       text: /Dear bob/,
       html: %r{<p>Dear bob</p>},
+      headers: {
+        "Message-ID" => "<message-id@mail.gmail.com>"
+      }
     })
   end
 
@@ -96,7 +99,13 @@ describe Griddler::Postmark::Adapter, '.normalize_params' do
       }],
       Subject: 'Reminder: First and Second Rule',
       TextBody: text_body,
-      HtmlBody: text_html
+      HtmlBody: text_html,
+      Headers: [
+        {
+          Name: "Message-ID",
+          Value: "<message-id@mail.gmail.com>"
+        }
+      ]
     }
   end
 
