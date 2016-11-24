@@ -24,7 +24,12 @@ module Griddler
           text: params[:TextBody],
           html: params[:HtmlBody],
           attachments: attachment_files,
-          headers: headers
+          headers: headers,
+          vendor_specific: {
+            original_recipient: params[:OriginalRecipient],
+            reply_to: params[:ReplyTo],
+            original_params: params
+          }
         }
       end
 
