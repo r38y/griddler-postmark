@@ -79,6 +79,19 @@ describe Griddler::Postmark::Adapter, '.normalize_params' do
     })
   end
 
+  it 'can handle a blank attachment content' do
+    params = default_params.merge({
+      Attachments: [
+        {
+          Name: "empty.gif",
+        }
+      ]
+    })
+    expect {
+      Griddler::Postmark::Adapter.normalize_params(params)
+    }.to_not raise_error
+  end
+
   def default_params
     {
       FromFull: {
