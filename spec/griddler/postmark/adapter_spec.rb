@@ -37,8 +37,6 @@ describe Griddler::Postmark::Adapter, '.normalize_params' do
         "Message-ID" => "<message-id@mail.gmail.com>"
       },
       vendor_specific: {
-        original_recipient: "dick@example.com",
-        reply_to: "john@example.com",
         original_params: default_params
       }
     })

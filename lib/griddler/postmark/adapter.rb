@@ -26,8 +26,6 @@ module Griddler
           attachments: attachment_files,
           headers: headers,
           vendor_specific: {
-            original_recipient: params[:OriginalRecipient],
-            reply_to: params[:ReplyTo],
             original_params: params
           }
         }
