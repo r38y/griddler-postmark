@@ -22,6 +22,7 @@ module Griddler
           text: params[:TextBody],
           html: params[:HtmlBody],
           attachments: attachment_files,
+          date: params[:Date],
           headers: headers
         }
       end
