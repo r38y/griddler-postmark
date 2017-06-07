@@ -56,6 +56,7 @@ describe Griddler::Postmark::Adapter, '.normalize_params' do
 
     expect(first.original_filename).to eq('photo1.jpg')
     expect(first.size).to eq(upload_1_params[:ContentLength])
+    expect(first.content_id).to eq(upload_1_params[:ContentID])
 
     expect(second.original_filename).to eq('photo2.jpg')
     expect(second.size).to eq(upload_2_params[:ContentLength])
@@ -153,7 +154,8 @@ describe Griddler::Postmark::Adapter, '.normalize_params' do
         Name: 'photo1.jpg',
         Content: Base64.encode64(file.read),
         ContentType: 'image/jpeg',
-        ContentLength: file.size
+        ContentLength: file.size,
+        "ContentID": "photo1.jpg@01D2DF9B.C09E7220"
       }
     end
   end
