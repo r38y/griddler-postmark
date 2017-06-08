@@ -20,6 +20,7 @@ module Griddler
           original_recipient: params[:OriginalRecipient],
           reply_to: params[:ReplyTo],
           from: full_email(params[:FromFull]),
+          headers: params[:Headers],
           subject: params[:Subject],
           text: params[:TextBody],
           html: params[:HtmlBody],
