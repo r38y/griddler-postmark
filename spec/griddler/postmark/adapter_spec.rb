@@ -155,7 +155,7 @@ describe Griddler::Postmark::Adapter, '.normalize_params' do
         Content: Base64.encode64(file.read),
         ContentType: 'image/jpeg',
         ContentLength: file.size,
-        "ContentID": "photo1.jpg@01D2DF9B.C09E7220"
+        ContentID: "photo1.jpg@01D2DF9B.C09E7220"
       }
     end
   end
