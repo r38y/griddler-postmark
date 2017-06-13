@@ -1,4 +1,5 @@
 require 'active_support/core_ext/string/strip'
+require_relative 'attachment'
 
 module Griddler
   module Postmark
@@ -56,10 +57,11 @@ module Griddler
         attachments = Array(params[:Attachments])
 
         attachments.map do |attachment|
-          ActionDispatch::Http::UploadedFile.new({
+          Griddler::Postmark::Attachment.new({
             filename: attachment[:Name],
             type: attachment[:ContentType],
-            tempfile: create_tempfile(attachment)
+            tempfile: create_tempfile(attachment),
+            content_id: attachment[:ContentID]
           })
         end
       end
