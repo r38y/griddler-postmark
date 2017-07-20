@@ -25,7 +25,10 @@ module Griddler
           text: params[:TextBody],
           html: params[:HtmlBody],
           attachments: attachment_files,
-          headers: headers
+          headers: headers,
+          vendor_specific: {
+            stripped_text_reply: params[:StrippedTextReply]
+          }
         }
       end
 
