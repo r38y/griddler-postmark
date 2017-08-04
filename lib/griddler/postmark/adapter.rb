@@ -22,6 +22,7 @@ module Griddler
           reply_to: params[:ReplyTo],
           from: full_email(params[:FromFull]),
           subject: params[:Subject],
+          message_id: params[:MessageID],
           text: params[:TextBody],
           html: params[:HtmlBody],
           attachments: attachment_files,
