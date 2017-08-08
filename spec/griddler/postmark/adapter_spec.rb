@@ -98,6 +98,16 @@ describe Griddler::Postmark::Adapter, '.normalize_params' do
     }.to_not raise_error
   end
 
+  it 'has stripped text reply' do
+    params = default_params.merge({
+      StrippedTextReply: text_body
+    })
+
+    normalized_params = Griddler::Postmark::Adapter.normalize_params(params)
+
+    expect(normalized_params[:vendor_specific][:stripped_text_reply]).to eq(text_body)
+  end
+
   def default_params
     {
       FromFull: {
