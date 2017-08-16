@@ -35,9 +35,6 @@ describe Griddler::Postmark::Adapter, '.normalize_params' do
       html: %r{<p>Dear bob</p>},
       headers: {
         "Message-ID" => "<message-id@mail.gmail.com>"
-      },
-      vendor_specific: {
-        message_id: '73e6d360-66eb-11e1-8e72-a8904824019b'
       }
     })
   end
@@ -129,7 +126,6 @@ describe Griddler::Postmark::Adapter, '.normalize_params' do
       OriginalRecipient: "dick@example.com",
       ReplyTo: "john@example.com",
       Subject: 'Reminder: First and Second Rule',
-      MessageID: '73e6d360-66eb-11e1-8e72-a8904824019b',
       TextBody: text_body,
       HtmlBody: text_html,
       Headers: [
