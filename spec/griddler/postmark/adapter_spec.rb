@@ -95,6 +95,19 @@ describe Griddler::Postmark::Adapter, '.normalize_params' do
     }.to_not raise_error
   end
 
+  it 'can handle a really long name' do
+    params = default_params.merge({
+      Attachments: [
+        {
+          Name: ("x"*500),
+        }
+      ]
+    })
+    expect {
+      Griddler::Postmark::Adapter.normalize_params(params)
+    }.to_not raise_error
+  end
+
   it 'has stripped text reply' do
     params = default_params.merge({
       StrippedTextReply: text_body
