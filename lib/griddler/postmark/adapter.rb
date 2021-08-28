@@ -27,6 +27,7 @@ module Griddler
           attachments: attachment_files,
           headers: headers,
           vendor_specific: {
+            mailbox_hash: params[:MailboxHash],
             message_id: params[:MessageID],
             stripped_text_reply: params[:StrippedTextReply]
           }
