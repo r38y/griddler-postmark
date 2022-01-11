@@ -95,6 +95,18 @@ describe Griddler::Postmark::Adapter, '.normalize_params' do
     }.to_not raise_error
   end
 
+  it 'can handle attachment content sent as Data' do
+    data_params = upload_1_params.merge(Data: upload_1_params[:Content])
+    data_params.delete(:Content)
+    params = default_params.merge({ Attachments: [data_params] })
+
+    normalized_params = Griddler::Postmark::Adapter.normalize_params(params)
+
+    first = normalized_params[:attachments].first
+    expect(first.original_filename).to eq('photo1.jpg')
+    expect(first.size).to eq(data_params[:ContentLength])
+  end
+
   it 'can handle a really long name' do
     params = default_params.merge({
       Attachments: [
