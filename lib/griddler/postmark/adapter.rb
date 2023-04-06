@@ -73,7 +73,9 @@ module Griddler
 
       def create_tempfile(attachment)
         filename = attachment[:Name].gsub(/\/|\\/, '_')[0..150]
-        tempfile = Tempfile.new(filename, Dir::tmpdir, encoding: 'ascii-8bit')
+        extension = File.extname(filename)
+        basename = File.basename(filename, extension)
+        tempfile = Tempfile.new([basename, extension], Dir::tmpdir, encoding: 'ascii-8bit')
         tempfile.write(content(attachment))
         tempfile.rewind
         tempfile
